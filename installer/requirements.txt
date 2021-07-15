@@ -7,7 +7,7 @@ flake8
 forex-python
 geopy
 gitpython
-googletrans
+googletrans==3.1.0a0
 IMDbPY
 mock
 nltk
@@ -33,7 +33,7 @@ speedtest-cli
 sympy
 tabulate
 termdown
-opencv-python
+opencv-python-headless
 whois
 wikipedia
 win10toast; sys_platform == 'win32'
