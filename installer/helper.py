@@ -7,6 +7,10 @@ from threading import Thread
 from tempfile import NamedTemporaryFile
 from unix_windows import IS_WIN
 
+SUPPORTED_SHELLS = [
+    'bash',
+    'zsh',
+]
 
 # python 2/3 compatibility
 try:
@@ -172,3 +176,20 @@ def shell(cmd):
     sys.stdout.write(' \b')
 
     return exit_code
+
+
+def get_default_shell():
+    '''
+    Determine and return the default shell
+    of the current logged in user.
+    Args:
+        None
+    Returns:
+        shell name (str)
+    '''
+    try:
+        bin_path = os.environ.get('SHELL')
+        return bin_path.split(os.path.sep)[-1]
+    except AttributeError:
+        # SHELL environment not set
+        return None
